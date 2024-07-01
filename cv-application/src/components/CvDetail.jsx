@@ -1,18 +1,17 @@
+/* eslint-disable react/prop-types */
 import FormField from "./FormField";
 import ContactInfo from "./ContactInfo";
-import ProfessionalSummary from "./ProfessionalSummary";
-import WorkExperience from "./WorkExperience";
+import WorkExp from "./WorkExperience";
 import Education from "./Education";
 import Skills from "./Skills";
 
-const CvDetail = () => {
+const CvDetail = ({ cvData, setCvData }) => {
   return (
     <>
-      <ContactInfo />
-      <ProfessionalSummary />
-      <WorkExperience />
-      <Education />
-      <Skills />
+      <ContactInfo cvData={cvData} setCvData={setCvData} />
+      <WorkExp cvData={cvData} setCvData={setCvData} />
+      <Education cvData={cvData} setCvData={setCvData} />
+      <Skills cvData={cvData} setCvData={setCvData} />
 
       <div className="formBtns">
         <FormField type="submit" value="Submit Form" name="formSubmit" />

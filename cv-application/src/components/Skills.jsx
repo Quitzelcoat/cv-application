@@ -1,31 +1,93 @@
+/* eslint-disable react/prop-types */
 import FormField from "./FormField";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 
-function Skills() {
+function Skills({ cvData, setCvData }) {
+  const [skill, setSkill] = useState({
+    title: "",
+    description: "",
+    startDate: "",
+    endDate: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setSkill({ ...skill, [name]: value });
+  };
+
+  const addSkill = (e) => {
+    e.preventDefault();
+    setCvData({
+      ...cvData,
+      allSkills: [
+        ...cvData.allSkills,
+        {
+          id: uuidv4(),
+          ...skill,
+        },
+      ],
+    });
+
+    setSkill({ title: "", description: "", startDate: "", endDate: "" });
+  };
+
+  const deleteSkill = (id) => {
+    const updatedSkills = cvData.allSkills.filter((skill) => skill.id !== id);
+
+    setCvData({ ...cvData, allSkills: updatedSkills });
+  };
+
   return (
     <>
       <div className="skills">
         <h2>Skills</h2>
       </div>
 
-      <form>
-        <FormField label="Skill Title" type="text" name="skillTitle" />
-        <FormField label="Skill Description" type="text" name="skillText" />
-        <FormField label="Start Date" type="date" name="skillStartDate" />
-        <FormField label="End Date" type="date" name="skillEndDate" />
+      <form onSubmit={addSkill}>
+        <FormField
+          label="Skill Title"
+          type="text"
+          name="title"
+          value={skill.title}
+          onChange={handleChange}
+        />
 
-        <div>
-          <FormField type="submit" value="Cancel" name="skillAdd" />
-          <FormField type="submit" value="Add" name="skillCancel" />
-        </div>
+        <FormField
+          label="Skill Description"
+          type="text"
+          name="description"
+          value={skill.description}
+          onChange={handleChange}
+        />
+
+        <FormField
+          label="Start Date"
+          type="date"
+          name="startDate"
+          value={skill.startDate}
+          onChange={handleChange}
+        />
+
+        <FormField
+          label="End Date"
+          type="date"
+          name="endDate"
+          value={skill.endDate}
+          onChange={handleChange}
+        />
+
+        <button type="submit">Add Skill</button>
       </form>
 
-      <div className="eachSkill">
-        <p>Title goes here</p>
+      {cvData.allSkills.map((skill) => (
+        <div key={skill.id} className="eachSkill">
+          <p>{skill.title}</p>
 
-        <FormField type="submit" value="Delete" name="skillAdd" />
-      </div>
-
-      <FormField type="submit" value="s" name="newSkill" />
+          <button onClick={() => deleteSkill(skill.id)}>Delete</button>
+        </div>
+      ))}
     </>
   );
 }

@@ -1,17 +1,87 @@
+/* eslint-disable react/prop-types */
+import { v4 as uuidv4 } from "uuid";
 import FormField from "./FormField";
 
-const Education = () => {
+const Education = ({ cvData, setCvData }) => {
+  const handleChange = (e, id) => {
+    const updateEducation = cvData.newEducation.map((edu) =>
+      edu.id === id ? { ...edu, [e.target.name]: e.target.value } : edu
+    );
+
+    setCvData({ ...cvData, newEducation: updateEducation });
+  };
+
+  const addEducation = () => {
+    setCvData({
+      ...cvData,
+      newEducation: [
+        ...cvData.newEducation,
+        {
+          id: uuidv4(),
+          degree: "",
+          institute: "",
+          location: "",
+          completed: "",
+        },
+      ],
+    });
+  };
+
+  const deleteEducation = (id) => {
+    const updatedEdu = cvData.newEducation.filter((edu) => edu.id !== id);
+
+    setCvData({ ...cvData, newEducation: updatedEdu });
+  };
+
   return (
     <div className="Education">
       <div className="profHeading">
         <h2>Education</h2>
       </div>
-      <form>
-        <FormField label="Degree Obtained" type="text" name="degree" />
-        <FormField label="Institute Name" type="text" name="instName" />
-        <FormField label="Location" type="text" name="location" />
-        <FormField label="Completed Date" type="date" name="complete" />
-      </form>
+
+      {cvData.newEducation.map((edu) => (
+        <form key={edu.id}>
+          <FormField
+            label="Degree Obtained"
+            type="text"
+            name="degree"
+            value={edu.degree}
+            onChange={(e) => handleChange(e, edu.id)}
+          />
+
+          <FormField
+            label="Institute Name"
+            type="text"
+            name="institute"
+            value={edu.institute}
+            onChange={(e) => handleChange(e, edu.id)}
+          />
+
+          <FormField
+            label="Location"
+            type="text"
+            name="location"
+            value={edu.location}
+            onChange={(e) => handleChange(e, edu.id)}
+          />
+
+          <FormField
+            label="Completed Date"
+            type="date"
+            name="completed"
+            value={edu.completed}
+            onChange={(e) => handleChange(e, edu.id)}
+          />
+
+          <button type="button" onClick={() => deleteEducation(edu.id)}>
+            Delete
+          </button>
+        </form>
+      ))}
+
+      <button type="button" onClick={addEducation}>
+        Add Education
+      </button>
     </div>
   );
 };
