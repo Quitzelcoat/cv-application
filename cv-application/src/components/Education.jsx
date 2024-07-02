@@ -42,7 +42,7 @@ const Education = ({ cvData, setCvData }) => {
       {cvData.newEducation.map((edu) => (
         <form key={edu.id}>
           <FormField
-            label="Degree Obtained"
+            placeholder="Degree Obtained"
             type="text"
             name="degree"
             value={edu.degree}
@@ -50,7 +50,7 @@ const Education = ({ cvData, setCvData }) => {
           />
 
           <FormField
-            label="Institute Name"
+            placeholder="Institute Name"
             type="text"
             name="institute"
             value={edu.institute}
@@ -58,7 +58,7 @@ const Education = ({ cvData, setCvData }) => {
           />
 
           <FormField
-            label="Location"
+            placeholder="Location"
             type="text"
             name="location"
             value={edu.location}

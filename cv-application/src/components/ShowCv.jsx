@@ -3,8 +3,10 @@ const ShowCv = ({ cvData }) => {
   return (
     <>
       <nav>
-        <h2>
-          Name: {cvData.firstName} {cvData.lastName}
+        <h2 className="cvShowHead">Name</h2>
+
+        <h2 className="cvShowHead">
+          {cvData.firstName} {cvData.lastName}
         </h2>
 
         <div className="contactTextHead">

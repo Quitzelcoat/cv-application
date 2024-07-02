@@ -47,7 +47,7 @@ function Skills({ cvData, setCvData }) {
 
       <form onSubmit={addSkill}>
         <FormField
-          label="Skill Title"
+          placeholder="Skill Title"
           type="text"
           name="title"
           value={skill.title}
@@ -55,7 +55,7 @@ function Skills({ cvData, setCvData }) {
         />
 
         <FormField
-          label="Skill Description"
+          placeholder="Skill Description"
           type="text"
           name="description"
           value={skill.description}

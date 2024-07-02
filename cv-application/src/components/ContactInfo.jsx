@@ -11,42 +11,50 @@ const ContactInfo = ({ cvData, setCvData }) => {
       <div className="contactHeading">
         <h2>Contact Information</h2>
       </div>
+
       <form>
-        <FormField
-          label="First Name"
-          type="text"
-          name="firstName"
-          value={cvData.firstName}
-          onChange={handleChange}
-        />
-        <FormField
-          label="Last Name"
-          type="text"
-          name="lastName"
-          value={cvData.lastName}
-          onChange={handleChange}
-        />
-        <FormField
-          label="Phone Number"
-          type="number"
-          name="phoneNumber"
-          value={cvData.phoneNumber}
-          onChange={handleChange}
-        />
-        <FormField
-          label="Email"
-          type="email"
-          name="email"
-          value={cvData.email}
-          onChange={handleChange}
-        />
-        <FormField
-          label="Date Of Birth"
-          type="date"
-          name="dateOfBirth"
-          value={cvData.dateOfBirth}
-          onChange={handleChange}
-        />
+        <div className="nameIfoInputs">
+          <FormField
+            placeholder="First Name"
+            type="text"
+            name="firstName"
+            value={cvData.firstName}
+            onChange={handleChange}
+          />
+
+          <FormField
+            placeholder="Last Name"
+            type="text"
+            name="lastName"
+            value={cvData.lastName}
+            onChange={handleChange}
+          />
+
+          <FormField
+            placeholder="Phone Number"
+            type="number"
+            name="phoneNumber"
+            value={cvData.phoneNumber}
+            onChange={handleChange}
+          />
+
+          <FormField
+            placeholder="Email"
+            type="email"
+            name="email"
+            value={cvData.email}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="contDateInput">
+          <FormField
+            type="date"
+            name="dateOfBirth"
+            value={cvData.dateOfBirth}
+            onChange={handleChange}
+          />
+        </div>
       </form>
 
       <div className="profSummary">
@@ -55,7 +63,7 @@ const ContactInfo = ({ cvData, setCvData }) => {
         </div>
         <form>
           <FormField
-            label="Summary"
+            placeholder="Summary"
             type="text"
             name="summary"
             value={cvData.summary}

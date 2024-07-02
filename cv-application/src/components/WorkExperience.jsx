@@ -45,21 +45,21 @@ const WorkExp = ({ cvData, setCvData }) => {
       {cvData.workExperience.map((work) => (
         <form key={work.id}>
           <FormField
-            label="Title"
+            placeholder="Title"
             type="text"
             name="title"
             value={work.title}
             onChange={(e) => handleChange(e, work.id)}
           />
           <FormField
-            label="Name"
+            placeholder="Name"
             type="text"
             name="name"
             value={work.name}
             onChange={(e) => handleChange(e, work.id)}
           />
           <FormField
-            label="Location"
+            placeholder="Location"
             type="text"
             name="location"
             value={work.location}
@@ -73,7 +73,7 @@ const WorkExp = ({ cvData, setCvData }) => {
             onChange={(e) => handleChange(e, work.id)}
           />
           <FormField
-            label="Job Description"
+            placeholder="Job Description"
             type="text"
             name="description"
             value={work.description}

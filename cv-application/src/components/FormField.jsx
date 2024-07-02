@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
-const FormField = ({ label, type, name, value, onChange }) => {
+const FormField = ({ label, type, name, value, onChange, placeholder }) => {
   return (
-    <div>
-      <label>
-        {label}{" "}
-        <input type={type} name={name} value={value} onChange={onChange} />
-      </label>
-    </div>
+    <label>
+      {label}{" "}
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
+    </label>
   );
 };
 
